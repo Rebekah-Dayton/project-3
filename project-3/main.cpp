@@ -14,7 +14,7 @@ int main(int argc, char** argv) {
     // TODO
     std::stringstream ss;
     std::string inputString;
-    std::string filename = "please.txt"; //argv[1];
+    std::string filename = argv[1];
     std::ifstream input(filename);
     if (input.is_open()) {
         ss << input.rdbuf();

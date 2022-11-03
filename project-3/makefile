@@ -1,5 +1,5 @@
-NUM?=1
-numbers=10 11 12 13 14 15 16 17 18 19 20 61 62
+NUM?=3
+numbers=30 33 35 36 37 41 42 43 44 61 62
 tests=project$(NUM)-exampleIO
 
 run:

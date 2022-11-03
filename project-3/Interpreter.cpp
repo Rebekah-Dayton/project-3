@@ -11,7 +11,7 @@ Interpreter::Interpreter(DatalogProgram datalogInfo) {
 
     for (unsigned int i = 0; i < schemes.size(); i++) {
         Header header;
-        for (unsigned j = 0; j < schemes.at(i)->GetSize(); j++) {
+        for (int j = 0; j < schemes.at(i)->GetSize(); j++) {
             header.AddAttribute(schemes.at(i)->GetParam(j));
         }
         Relation* newRelation =new Relation(schemes.at(i)->GetId(), header);
@@ -20,7 +20,7 @@ Interpreter::Interpreter(DatalogProgram datalogInfo) {
 
     for (unsigned int i = 0; i < facts.size(); i++) {
         Tuple tuple;
-        for (unsigned j = 0; j < facts.at(i)->GetSize(); j++) {
+        for (int j = 0; j < facts.at(i)->GetSize(); j++) {
             tuple.AddValue(facts.at(i)->GetParam(j));
         }
         data.SetTable(facts.at(i)->GetId(), tuple);
@@ -43,7 +43,7 @@ void Interpreter::EvaluateQueries() {
         std::vector<std::string> variables;
         std::vector<unsigned int> paramIndex;
         Relation* table = data.GetTable(queries.at(i)->GetId());
-        for (unsigned int j = 0; j < queries.at(i)->GetSize(); j++) {
+        for (int j = 0; j < queries.at(i)->GetSize(); j++) {
             std::string parameter = queries.at(i)->GetParam(j);
             if (parameter[0] == '\'' ) {
                 table = table->Select(j, parameter);
@@ -85,7 +85,7 @@ Relation Interpreter::EvaluatePredicate(Predicate p) {
     Relation* table = data.GetTable(p.GetId());
     std::vector<std::string> variables;
     std::vector<unsigned int> paramIndex;
-    for (unsigned int j = 0; j < p.GetSize(); j++) {
+    for (int j = 0; j < p.GetSize(); j++) {
         std::string parameter = p.GetParam(j);
         if (parameter[0] == '\'' ) {
             table = table->Select(j, parameter);

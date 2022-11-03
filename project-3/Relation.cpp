@@ -16,7 +16,7 @@ void Relation::AddTuple(Tuple to_add) {
 std::string Relation::To_String() {
     std::string results = "  ";
     for (Tuple t : tuples) {
-        for (unsigned int i = 0; i < attributes.GetSize(); i++) {
+        for (int i = 0; i < attributes.GetSize(); i++) {
             results += attributes.GetAttribute(i) + "=" + t.GetValue(i);
             if (i != attributes.GetSize() - 1) {
                 results += ", ";
@@ -82,8 +82,8 @@ Relation *Relation::Rename(std::string attribute, std::string newAttribute) {
     Relation* rename = new Relation();
     rename->SetName(name);
     Header header;
-    unsigned int index = attributes.FindAttribute(attribute);
-    for (unsigned int i = 0; i < attributes.GetSize(); i++) {
+    int index = attributes.FindAttribute(attribute);
+    for (int i = 0; i < attributes.GetSize(); i++) {
         if (i == index) {
             header.AddAttribute(newAttribute);
         }
@@ -148,7 +148,7 @@ Relation *Relation::Rename(int index, std::string newAttribute) {
     Relation* rename = new Relation();
     rename->SetName(name);
     Header header;
-    for (unsigned int i = 0; i < attributes.GetSize(); i++) {
+    for (int i = 0; i < attributes.GetSize(); i++) {
         if (i == index) {
             header.AddAttribute(newAttribute);
         }
